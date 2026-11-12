@@ -9,6 +9,8 @@
 <style>
 @font-face{font-family:'Playfair Display';src:url('assets/undangya/misi-rahasia/font-title.woff2') format('woff2');font-weight:600 800;font-style:normal;font-display:swap}
 @font-face{font-family:'Special Elite';src:url('assets/undangya/misi-rahasia/font-type.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Misi Display';src:url('assets/undangya/misi-rahasia/font-hero-display.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Misi Kicker';src:url('assets/undangya/misi-rahasia/font-hero-kicker.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 :root{--kraft:#a97f46;--kraft-d:#7d5c2c;--paper:#f6ecd4;--paper2:#efe0bd;--card:#fbf4df;--ink:#241a10;--ink2:#4a3a26;--mut:#6d5940;--red:#a52a24;--red-d:#7e1f1a;--navy:#26324a;--gold:#c9a45c;--gold-l:#eed9a4;--line:rgba(125,92,44,.5);--dark:#1d150c}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -66,14 +68,16 @@ a{color:inherit}
 .pin{width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9a8f,#c22f26 55%,#7e1f1a);box-shadow:0 4px 7px rgba(30,10,5,.5);display:inline-block}
 /* ===== SAMPUL: MAP TERSEGEL ===== */
 #cover{position:relative;height:100dvh;min-height:660px;overflow:hidden;background:#241a10}
-.folder{position:absolute;inset:0;background:linear-gradient(165deg,#b98d4e,#a97f46 40%,#8a6531 78%,#77572a)}
+.folder{position:absolute;inset:0;z-index:1;background:linear-gradient(165deg,rgba(185,141,78,.80),rgba(169,127,70,.74) 40%,rgba(138,101,49,.82) 78%,rgba(119,87,42,.88))}
+.cover-bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.cv-deco{position:absolute;z-index:4;pointer-events:none}
 .folder::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(60,38,10,.10) 0 1px,transparent 1px 5px),radial-gradient(90% 40% at 50% 0%,rgba(255,240,200,.25),transparent 60%)}
 .folder-tab{position:absolute;top:0;left:0;width:46%;height:34px;background:linear-gradient(180deg,#c49a58,#b08644);border-radius:0 0 14px 0;box-shadow:0 3px 8px rgba(50,32,8,.4);display:flex;align-items:center;padding:0 14px;font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.22em;color:#3a2a12}
 .folder-scan{position:absolute;left:0;right:0;height:70px;top:0;z-index:6;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,238,190,.16),transparent);animation:scanMove 8.5s linear 1.2s infinite}
 .flap{position:absolute;left:-4%;right:-4%;top:-46%;height:52%;z-index:7;background:linear-gradient(180deg,#c79e5c,#a97f46 70%,#8a6531);border-bottom:3px solid rgba(70,48,16,.55);box-shadow:0 14px 30px rgba(30,18,4,.5);transform-origin:50% 0;pointer-events:none}
 body.ritual .flap{animation:flapOpen 1.05s cubic-bezier(.5,0,.8,.4) both}
 @keyframes flapOpen{to{transform:perspective(600px) rotateX(-72deg) translateY(-6%);opacity:.92}}
-.sealwrap{position:absolute;left:50%;top:30.5%;transform:translate(-50%,-50%);z-index:9;width:104px;height:104px}
+.sealwrap{position:absolute;left:19.5%;top:36%;transform:translate(-50%,-50%);z-index:9;width:80px;height:80px}
 .seal-half{position:absolute;inset:0;border-radius:50%;overflow:hidden;pointer-events:none}
 .seal-half .seal-disc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 36% 30%,#c94a41,#a52a24 55%,#7e1f1a);box-shadow:inset 0 3px 8px rgba(255,200,180,.5),inset 0 -6px 12px rgba(60,5,2,.55),0 10px 22px rgba(20,8,2,.55);display:flex;align-items:center;justify-content:center}
 .seal-disc svg{width:62%}
@@ -83,17 +87,17 @@ body.ritual .seal-r{animation:sealR .8s cubic-bezier(.4,0,.7,.4) both}
 @keyframes sealL{to{transform:translate(-26px,10px) rotate(-16deg);opacity:.9}}
 @keyframes sealR{to{transform:translate(26px,14px) rotate(14deg);opacity:.9}}
 .seal-shine{position:absolute;top:0;bottom:0;width:34%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:waxSheen 3.2s ease-in-out infinite;pointer-events:none}
-.doc-peek{position:absolute;left:50%;top:31%;width:47%;max-width:205px;height:218px;object-fit:cover;transform:translate(-50%,16px) rotate(-2deg);z-index:5;border:5px solid #fbf4df;box-shadow:0 16px 30px rgba(25,14,2,.55);opacity:.97}
+.doc-peek{position:absolute;left:50%;top:33%;width:47%;max-width:205px;height:208px;object-fit:cover;object-position:50% 22%;transform:translate(-50%,16px) rotate(-2deg);z-index:5;border:5px solid #fbf4df;box-shadow:0 16px 30px rgba(25,14,2,.55);opacity:.97}
 body.ritual .doc-peek{animation:peekUp 1s .25s cubic-bezier(.22,.8,.3,1) both}
 @keyframes peekUp{from{transform:translate(-50%,46px) rotate(-2deg)}to{transform:translate(-50%,-4px) rotate(-2deg)}}
 .mission-stamp{position:absolute;right:3%;bottom:26%;z-index:10;opacity:0}
 body.ritual .mission-stamp{animation:stampSlam .55s .55s cubic-bezier(.2,1.6,.4,1) both}
 .cover-ui{position:absolute;inset:0;z-index:11;display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px 22px 26px;pointer-events:none}
 .cover-ui>*{pointer-events:auto}
-.cover-filetab{margin-top:46px;font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.28em;color:#ffeec2;background:rgba(36,24,12,.82);border:1px solid rgba(238,217,164,.65);padding:6px 13px 4px;border-radius:4px;animation:fadeUp 1s .3s ease both,microFloat 5s 1.5s ease-in-out infinite}
-.cover-kicker{margin-top:12px;font-family:'Special Elite',monospace;font-size:11px;letter-spacing:.38em;color:#fff;text-shadow:0 2px 12px rgba(20,12,4,.95);animation:fadeUp 1s .5s ease both}
-.cover-names{font-family:'Playfair Display',serif;font-weight:800;margin-top:6px;font-size:52px;line-height:1.06;color:#fffaf0;text-shadow:0 2px 10px rgba(30,18,4,.7),0 4px 24px rgba(20,12,4,.65);animation:fadeUp 1.1s .7s ease both}
-.cover-names .amp{display:block;font-size:30px;line-height:1;color:var(--gold-l)}
+.cover-filetab{margin-top:46px;font-family:'Misi Kicker',sans-serif;font-size:11px;letter-spacing:.24em;color:#ffeec2;background:rgba(36,24,12,.82);border:1px solid rgba(238,217,164,.65);padding:6px 13px 4px;border-radius:4px;animation:fadeUp 1s .3s ease both,microFloat 5s 1.5s ease-in-out infinite}
+.cover-kicker{margin-top:12px;font-family:'Misi Kicker',sans-serif;font-size:12.5px;letter-spacing:.3em;color:#fff;text-shadow:0 2px 12px rgba(20,12,4,.95);animation:fadeUp 1s .5s ease both}
+.cover-names{font-family:'Misi Display','Special Elite',monospace;font-weight:400;margin-top:8px;font-size:47px;line-height:1.14;letter-spacing:.01em;color:#fffaf0;text-shadow:0 2px 10px rgba(30,18,4,.7),0 4px 24px rgba(20,12,4,.65);animation:fadeUp 1.1s .7s ease both}
+.cover-names .amp{display:block;font-size:27px;line-height:1.1;color:var(--gold-l)}
 .cover-mission{margin-top:10px;animation:fadeUp 1s .95s ease both}
 .cover-date{margin-top:11px;font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.24em;color:#ffeec2;background:rgba(36,24,12,.85);padding:7px 14px 5px;border-radius:999px;border:1px solid rgba(238,217,164,.7);animation:fadeUp 1s 1.1s ease both,microFloat 6s 2s ease-in-out infinite}
 .cover-spacer{flex:1}
@@ -107,7 +111,7 @@ body.opening #cover{animation:pushZoom 1.15s cubic-bezier(.6,0,.8,.4) both}
 .fx-a{animation:flyXA 19s 3s infinite}.fy-a{animation:flyYA 19s 3s infinite}.fi-a{width:14%;animation:tiltA 19s 3s infinite}
 .scrap-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:8}
 .scrap{position:absolute;left:0;top:var(--pt,10%);pointer-events:none;opacity:0;animation:scrapDrift var(--pd,20s) linear infinite;animation-delay:var(--pdl,0s)}
-.deco-corner{position:absolute;font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.2em;color:rgba(255,238,194,.9);text-shadow:0 1px 6px rgba(30,18,4,.8)}
+.deco-corner{position:absolute;font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.2em;color:#ffeec2;background:rgba(36,24,12,.74);padding:3px 8px 2px;border-radius:3px;text-shadow:0 1px 4px rgba(30,18,4,.8)}
 /* ===== KONTEN: DOKUMEN BERKAS ===== */
 #content{display:none}body.opened #content{display:block}
 .world-bg{position:sticky;top:0;height:100dvh;margin-bottom:-100dvh;overflow:hidden;pointer-events:none;z-index:0;background:#e9d6a8}
@@ -117,14 +121,14 @@ body.opening #cover{animation:pushZoom 1.15s cubic-bezier(.6,0,.8,.4) both}
 section{position:relative;padding:56px 22px 48px}
 .doc{background:linear-gradient(180deg,rgba(251,244,223,.97),rgba(246,236,212,.95));border:1px solid var(--line);border-radius:6px;box-shadow:0 16px 34px rgba(80,58,20,.22);padding:0 18px 24px;position:relative}
 .doc::before{content:"";position:absolute;inset:7px;border:1px dashed rgba(125,92,44,.38);border-radius:4px;pointer-events:none}
-.doc-head{display:flex;align-items:flex-start;gap:10px;padding:16px 2px 12px;border-bottom:2px solid rgba(125,92,44,.35);position:relative;margin-bottom:18px}
-.doc-head .clip{flex:none;margin-top:-24px}
+.doc-head{display:flex;align-items:flex-start;gap:10px;padding:27px 2px 12px;border-bottom:2px solid rgba(125,92,44,.35);position:relative;margin-bottom:18px}
+.doc-head .clip{flex:none;margin-top:-35px}
 .doc-meta{flex:1;min-width:0}
 .doc-no{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.26em;color:var(--red-d)}
 .doc-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;line-height:1.15;margin-top:3px}
 .doc-sub{font-size:13.5px;font-style:italic;color:var(--ink2);margin-top:3px;line-height:1.5}
 .doc-holes{display:flex;flex-direction:column;gap:7px;padding-top:4px}
-.doc-stamp{position:absolute;right:2px;top:44px;z-index:2}
+.doc-stamp{position:absolute;right:14px;top:-15px;z-index:2}
 .perf{display:flex;align-items:center;gap:10px;padding:4px 26px;position:relative;z-index:1}
 .perf .line{flex:1;border-top:2px dashed rgba(90,64,28,.5)}
 .perf .str{height:14px;flex:none}
@@ -146,7 +150,7 @@ section{position:relative;padding:56px 22px 48px}
 .id-body{display:flex;gap:13px;padding:14px 14px 6px}
 .id-photo{flex:none;width:104px;height:130px;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 14px rgba(60,40,10,.3);transform:rotate(-1.6deg)}
 .id-info{flex:1;min-width:0}
-.id-info h3{font-family:'Playfair Display',serif;font-size:19px;line-height:1.2}
+.id-info h3{font-family:'Misi Display','Special Elite',monospace;font-weight:400;font-size:19.5px;line-height:1.25}
 .gelar{font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--red-d);margin-top:3px}
 .id-info p{font-size:12.5px;line-height:1.6;color:var(--ink2);margin-top:6px}
 .codename{display:inline-block;font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.16em;background:var(--ink);color:#ffeec2;padding:4px 9px 2px;border-radius:3px;margin-top:7px;animation:microFloat 6s ease-in-out infinite}
@@ -164,7 +168,7 @@ section{position:relative;padding:56px 22px 48px}
 .tl-year{font-family:'Special Elite',monospace;font-size:10px;letter-spacing:.2em;color:var(--red-d)}
 .tl-title{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:800;margin-top:2px}
 .tl-card p{font-size:13.5px;line-height:1.7;color:var(--ink2);margin-top:7px}
-.tl-thumb{width:100%;height:130px;object-fit:cover;border-radius:5px;margin-top:10px;border:3px solid #fff;box-shadow:0 5px 12px rgba(60,40,10,.25)}
+.tl-thumb{width:100%;height:130px;object-fit:cover;object-position:50% 18%;border-radius:5px;margin-top:10px;border:3px solid #fff;box-shadow:0 5px 12px rgba(60,40,10,.25)}
 /* countdown jam misi */
 .mission-clock{background:linear-gradient(170deg,#2b2013,#1d150c 60%,#150e06);border:2px solid #57431f;border-radius:14px;padding:20px 14px 16px;box-shadow:0 18px 36px rgba(30,18,4,.45),inset 0 1px 0 rgba(238,217,164,.25);position:relative;overflow:hidden;text-align:center}
 .reticle{position:absolute;left:50%;top:44%;width:230px;height:230px;transform:translate(-50%,-50%);opacity:.5;pointer-events:none}
@@ -194,9 +198,11 @@ section{position:relative;padding:56px 22px 48px}
 .gal-slide{flex:0 0 76%;scroll-snap-align:center;position:relative}
 .ev-card{background:#fdfaf0;padding:9px 9px 7px;box-shadow:0 12px 24px rgba(0,0,0,.5);position:relative}
 .gal-slide:nth-child(odd) .ev-card{transform:rotate(-1.3deg)}.gal-slide:nth-child(even) .ev-card{transform:rotate(1.2deg)}
-.ev-card img{width:100%;height:270px;object-fit:cover;animation:breathZoom 9s ease-in-out infinite alternate}
+.ev-card img{width:100%;height:270px;object-fit:cover}
+.ev-card{animation:cardGlow 5.2s ease-in-out infinite alternate}
+@keyframes cardGlow{from{box-shadow:0 12px 24px rgba(0,0,0,.5)}to{box-shadow:0 12px 30px rgba(201,164,92,.45),0 12px 24px rgba(0,0,0,.5)}}
 .ev-pin{position:absolute;left:50%;top:-9px;transform:translateX(-50%);z-index:3}
-.ev-label{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.14em;color:#7e1f1a}
+.ev-label{display:flex;justify-content:space-between;align-items:center;margin-top:8px;position:relative;z-index:2;font-family:'Special Elite',monospace;font-size:9.5px;letter-spacing:.14em;color:#7e1f1a}
 .ev-note{font-family:'Special Elite',monospace;font-size:11px;color:#4a3a26;margin-top:3px}
 .string-svg{position:absolute;left:0;top:26px;width:100%;height:44px;pointer-events:none;z-index:2;overflow:visible}
 .string-sway{transform-origin:8% 0;animation:stringSway 7s ease-in-out infinite alternate}
@@ -206,7 +212,7 @@ section{position:relative;padding:56px 22px 48px}
 .gal-count{font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.2em;color:#ffeec2;background:var(--ink);padding:5px 11px 3px;border-radius:4px}
 /* video */
 .vid-wrap{position:relative;border-radius:8px;overflow:hidden;background:#000}
-.vid-stage{position:relative}.vid-stage video{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;background:#000}
+.vid-stage{position:relative}.vid-stage video{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;background:#000}
 .vid-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;border:2px solid var(--gold-l);background:rgba(29,21,12,.78);color:#ffeec2;font-size:21px;z-index:2}
 .vid-wrap.playing .vid-btn{opacity:0;pointer-events:none}
 .live-badge{display:inline-flex;align-items:center;gap:7px;font-family:'Special Elite',monospace;font-size:10.5px;letter-spacing:.2em;background:#3d0f0c;color:#ffb3ac;padding:6px 13px 4px;border-radius:999px}
@@ -239,19 +245,49 @@ section{position:relative;padding:56px 22px 48px}
 .turut-card h4{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:7px;text-align:center}
 .turut-card p{font-size:13.5px;line-height:1.75;color:var(--ink2);text-align:center}
 .turut-card{margin-bottom:14px}
-.penutup-names{font-family:'Playfair Display',serif;font-size:34px;font-weight:800}
-.foot-note{position:relative;z-index:1;text-align:center;font-size:11px;line-height:1.7;color:#8a744e;padding:6px 30px 90px}
+.penutup-names{font-family:'Misi Display','Special Elite',monospace;font-size:31px;font-weight:400;line-height:1.2}
+.foot-note{position:relative;z-index:1;text-align:center;font-size:11px;line-height:1.7;color:#e8d5a8;background:rgba(29,21,12,.9);border:1px solid rgba(201,164,92,.45);border-radius:10px;margin:2px 14px 96px;padding:13px 18px 15px}
 #btnMusic{position:fixed;right:16px;bottom:16px;width:50px;height:50px;border-radius:50%;border:1.5px solid var(--gold-l);background:rgba(29,21,12,.88);z-index:60;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.45)}
 #btnMusic svg{width:24px;height:24px}
 #btnMusic.playing svg{animation:spinSlow 5s linear infinite}
 #lightbox{position:fixed;inset:0;background:rgba(12,8,3,.93);z-index:80;display:none;align-items:center;justify-content:center;padding:20px}
 #lightbox.on{display:flex}#lightbox img{max-height:86dvh;border:5px solid #fdfaf0;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+/* ===== Program Detail: background unik per section ===== */
+section{background-size:cover;background-position:center;background-repeat:no-repeat}
+#sambutan{background-image:linear-gradient(rgba(246,236,212,.30),rgba(246,236,212,.30)),url('assets/undangya/misi-rahasia/bg-world-1.webp')}
+#mempelai{background-image:linear-gradient(rgba(246,236,212,.34),rgba(246,236,212,.34)),url('assets/undangya/misi-rahasia/misi-bg-mempelai.webp')}
+#kisah{background-image:linear-gradient(rgba(246,236,212,.30),rgba(246,236,212,.30)),url('assets/undangya/misi-rahasia/bg-world-2.webp')}
+#acara{background-image:linear-gradient(rgba(246,236,212,.30),rgba(246,236,212,.30)),url('assets/undangya/misi-rahasia/misi-bg-acara.webp')}
+#galeri{background-image:linear-gradient(rgba(246,236,212,.16),rgba(246,236,212,.16)),url('assets/undangya/misi-rahasia/misi-bg-galeri.webp')}
+#cuplikan{background-image:linear-gradient(rgba(246,236,212,.30),rgba(246,236,212,.30)),url('assets/undangya/misi-rahasia/misi-bg-cuplikan.webp')}
+#live{background-image:linear-gradient(rgba(246,236,212,.30),rgba(246,236,212,.30)),url('assets/undangya/misi-rahasia/misi-bg-live.webp')}
+#rsvp{background-image:linear-gradient(rgba(246,236,212,.34),rgba(246,236,212,.34)),url('assets/undangya/misi-rahasia/misi-bg-rsvp.webp')}
+#bukutamu{background-image:linear-gradient(rgba(246,236,212,.34),rgba(246,236,212,.34)),url('assets/undangya/misi-rahasia/misi-bg-bukutamu.webp')}
+#amplop{background-image:linear-gradient(rgba(246,236,212,.34),rgba(246,236,212,.34)),url('assets/undangya/misi-rahasia/misi-bg-amplop.webp')}
+#turut{background-image:linear-gradient(rgba(246,236,212,.34),rgba(246,236,212,.34)),url('assets/undangya/misi-rahasia/misi-bg-turut.webp')}
+#penutup{background-image:linear-gradient(rgba(246,236,212,.26),rgba(246,236,212,.26)),url('assets/undangya/misi-rahasia/bg-world-3.webp')}
+/* ===== Program Detail: sway berjangkar 2,8-5,5 dtk ===== */
+@keyframes swayAnchor{from{transform:rotate(-2.4deg)}to{transform:rotate(2.4deg)}}
+.sw-tegak{transform-origin:50% 100%;animation:swayAnchor var(--swd,4.2s) cubic-bezier(.37,.02,.63,.98) infinite alternate}
+.sw-gantung{transform-origin:50% 0;animation:swayAnchor var(--swd,4.2s) cubic-bezier(.37,.02,.63,.98) infinite alternate}
+.fx-b{animation:flyXA 24s 8s infinite}.fy-b{animation:flyYA 24s 8s infinite}.fi-b{width:11%;animation:tiltA 24s 8s infinite}
+.cb-center{position:absolute;left:50%;top:66.5%;transform:translateX(-50%);width:29%;z-index:4;pointer-events:none}
+.cb-center img{width:100%}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1!important;transform:none!important;clip-path:none!important}.mission-stamp{opacity:1!important}#rsvpStamp.on{display:block}}
+/* ===== Program Detail: RETUNE periode gerak lama (menimpa aturan di atas) ===== */
+.string-sway{animation:stringSway 4.6s cubic-bezier(.37,.02,.63,.98) infinite alternate}
+.cover-filetab{animation-duration:1s,4.3s}
+.cover-date{animation-duration:1s,4.8s}
+.kicker-chip{animation-duration:4.4s}
+.codename{animation-duration:5.1s}
+.dc-chip{animation-duration:4.2s}
+.dc-chip:nth-child(2){animation-duration:3.5s}.dc-chip:nth-child(3){animation-duration:4.9s}.dc-chip:nth-child(4){animation-duration:3.9s}.dc-chip:nth-child(5){animation-duration:5.3s}.dc-chip:nth-child(6){animation-duration:4.5s}
 </style>
 </head>
 <body>
 <div class="phone">
   <header id="cover" aria-label="Sampul map berkas misi tersegel — undangan Misi Rahasia">
+    <img class="cover-bgimg" data-deco src="assets/undangya/misi-rahasia/cover-bg.webp" alt="" width="640" height="1280">
     <div class="folder" data-deco aria-hidden="true"></div>
     <div class="folder-tab" data-deco>BERKAS No. 0612</div>
     <img data-deco class="doc-peek" src="assets/undangya/misi-rahasia/hero.webp" alt="" width="640" height="800">
@@ -262,20 +298,32 @@ section{position:relative;padding:56px 22px 48px}
     <span data-deco style="position:absolute;right:6%;top:20%" class="hole"></span>
     <span data-deco style="position:absolute;left:9%;top:44%" class="clip"></span>
     <span data-deco style="position:absolute;right:9%;top:44%" class="clip"></span>
-    <span data-deco style="position:absolute;left:12%;bottom:19%" class="pin"></span>
-    <span data-deco style="position:absolute;right:12%;bottom:19%" class="pin"></span>
-    <svg data-deco class="finger" style="position:absolute;left:7%;bottom:26%;width:44px" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#7e1f1a" stroke-width="2"><path d="M24 6c9 0 15 7 15 16 0 7-2 12-4 18"/><path d="M24 13c6 0 10 5 10 11 0 6-1 10-3 15"/><path d="M24 20c3.4 0 6 3 6 7 0 5-1 9-2 13"/><path d="M9 22c0 6 1 11 3 16"/><circle cx="24" cy="27" r="2.4" fill="#7e1f1a" stroke="none"/></g></svg>
-    <svg data-deco style="position:absolute;right:7%;bottom:27%;width:52px;opacity:.85" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="#ffeec2" stroke-width="2"><circle cx="30" cy="30" r="20"/><path d="M30 2v12M30 46v12M2 30h12M46 30h12"/></g></svg>
-    <span data-deco class="deco-corner" style="left:5%;top:56%">ARSIP · <span class="redact">████</span></span>
-    <span data-deco class="deco-corner" style="right:5%;top:56%">SALINAN · <span class="redact">██</span></span>
-    <span data-deco class="deco-corner" style="left:5%;bottom:15.5%">PRIORITAS · TINGGI</span>
-    <span data-deco class="deco-corner" style="right:5%;bottom:15.5%">HAL. 1 / 1</span>
-    <img data-deco style="position:absolute;left:4%;top:64%;width:15%" src="assets/undangya/misi-rahasia/decor-stamp.webp" alt="">
-    <img data-deco style="position:absolute;right:4%;top:64%;width:15%" src="assets/undangya/misi-rahasia/decor-compass.webp" alt="">
-    <img data-deco style="position:absolute;left:16%;top:8%;width:12%" src="assets/undangya/misi-rahasia/badge.webp" alt="">
-    <img data-deco style="position:absolute;right:16%;top:8%;width:12%" src="assets/undangya/misi-rahasia/decor-envelope.webp" alt="">
+    <span data-deco style="position:absolute;left:23%;bottom:20.5%" class="pin"></span>
+    <span data-deco style="position:absolute;right:23%;bottom:20.5%" class="pin"></span>
+    <img data-deco class="cv-deco sw-gantung" style="left:3.5%;top:15.5%;width:11.5%;--swd:4.7s" src="assets/undangya/misi-rahasia/badge.webp" alt="">
+    <img data-deco class="cv-deco sw-gantung" style="right:3.5%;top:15.5%;width:11.5%;--swd:3.9s" src="assets/undangya/misi-rahasia/decor-envelope.webp" alt="">
+    <img data-deco class="cv-deco sw-gantung" style="left:2%;top:24.5%;width:10.5%;--swd:5.2s" src="assets/undangya/misi-rahasia/decor-envelope.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="right:2%;top:24%;width:9.5%;--swd:3.6s" src="assets/undangya/misi-rahasia/misi-kaca-pembesar.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="left:1.8%;top:38%;width:7.2%;--swd:4.1s" src="assets/undangya/misi-rahasia/icon-key.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="right:1.8%;top:38%;width:7.2%;--swd:4.8s" src="assets/undangya/misi-rahasia/icon-key.webp" alt="">
+    <img data-deco class="cv-deco sw-gantung" style="left:4%;top:49%;width:11%;--swd:4.5s" src="assets/undangya/misi-rahasia/decor-compass.webp" alt="">
+    <img data-deco class="cv-deco finger" style="right:5.5%;top:48.5%;width:9%" src="assets/undangya/misi-rahasia/misi-sidikjari.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="left:4%;top:57.5%;width:15%;--swd:4.6s" src="assets/undangya/misi-rahasia/misi-kamera.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="right:3%;top:57%;width:11.5%;--swd:3.8s" src="assets/undangya/misi-rahasia/misi-radio.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="left:5.5%;top:66.5%;width:12.5%;--swd:4.2s" src="assets/undangya/misi-rahasia/decor-stamp.webp" alt="">
+    <img data-deco class="cv-deco sw-gantung" style="right:5%;top:71.5%;width:12.5%;--swd:5s" src="assets/undangya/misi-rahasia/decor-compass.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="left:4%;top:73.5%;width:14.5%;--swd:5.3s" src="assets/undangya/misi-rahasia/misi-teropong.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="right:5%;top:74%;width:12%;--swd:4.4s" src="assets/undangya/misi-rahasia/decor-stamp.webp" alt="">
+    <span class="cb-center" data-deco><img class="sw-tegak" style="--swd:4.9s" src="assets/undangya/misi-rahasia/misi-map-berkas.webp" alt=""></span>
+    <img data-deco class="cv-deco sw-tegak" style="left:1.5%;bottom:5.5%;width:12%;--swd:3.3s" src="assets/undangya/misi-rahasia/decor-plant.webp" alt="">
+    <img data-deco class="cv-deco sw-tegak" style="right:1.5%;bottom:5.5%;width:12%;--swd:4s" src="assets/undangya/misi-rahasia/decor-plant.webp" alt="">
+    <span data-deco class="deco-corner" style="left:27%;top:58.5%">ARSIP · <span class="redact">████</span></span>
+    <span data-deco class="deco-corner" style="right:27%;top:58.5%">SALINAN · <span class="redact">██</span></span>
+    <span data-deco class="deco-corner" style="left:24%;top:77%">PRIORITAS · TINGGI</span>
+    <span data-deco class="deco-corner" style="right:24%;top:77%">HAL. 1 / 1</span>
     <div class="folder-scan" data-deco aria-hidden="true"></div>
     <div class="flyx fx-a" style="top:26%" data-deco><div class="fy-a"><img class="flyimg fi-a" src="assets/undangya/misi-rahasia/paper-plane.webp" alt=""></div></div>
+    <div class="flyx fx-b" style="top:71%" data-deco><div class="fy-b"><img class="flyimg fi-b" src="assets/undangya/misi-rahasia/paper-plane.webp" alt=""></div></div>
     <div class="scrap-field" id="scrapCover" aria-hidden="true"></div>
     <div class="sealwrap" data-deco aria-hidden="true">
       <div class="seal-half seal-l"><div class="seal-disc"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="#ffd9d2" stroke-width="2"/><path d="M30 16l3.4 7 7.6 1.1-5.5 5.3 1.3 7.6L30 33.4 23.2 37l1.3-7.6L19 24.1 26.6 23z" fill="#ffd9d2"/></svg></div></div>
@@ -298,12 +346,10 @@ section{position:relative;padding:56px 22px 48px}
   </header>
 
   <main id="content">
-    <div class="world-bg" aria-hidden="true"><div class="world-stack" id="worldStack"><img src="assets/undangya/misi-rahasia/bg-world-1.webp" alt="" width="720" height="480"><img src="assets/undangya/misi-rahasia/bg-world-2.webp" alt="" width="720" height="480" loading="lazy"><img src="assets/undangya/misi-rahasia/bg-world-3.webp" alt="" width="720" height="480" loading="lazy"></div></div>
-
     <section id="sambutan"><div class="bg-tint"><div class="doc rv rv-drop">
       <div class="doc-head"><span class="clip" aria-hidden="true"></span><div class="doc-meta"><div class="doc-no">DOK. 01 — PEMBUKAAN BERKAS</div><h2 class="doc-title">Pembukaan Berkas</h2><p class="doc-sub">Dengan memohon rahmat Allah SWT</p></div><div class="doc-holes"><span class="hole"></span><span class="hole"></span></div><span class="stamp doc-stamp rv rv-stamp">RAHASIA</span></div>
       <div style="text-align:center;padding:0 6px">
-        <svg class="finger" style="width:46px;margin:2px auto 10px" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#7e1f1a" stroke-width="2"><path d="M24 6c9 0 15 7 15 16 0 7-2 12-4 18"/><path d="M24 13c6 0 10 5 10 11 0 6-1 10-3 15"/><path d="M24 20c3.4 0 6 3 6 7 0 5-1 9-2 13"/><path d="M9 22c0 6 1 11 3 16"/></g></svg>
+        <img class="finger" src="assets/undangya/misi-rahasia/misi-sidikjari.webp" alt="" style="width:46px;margin:2px auto 10px" loading="lazy">
         <p style="font-size:17px;line-height:1.75;font-style:italic">“Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”</p>
         <p style="margin-top:11px;font-family:'Special Elite',monospace;font-size:11.5px;letter-spacing:.22em;color:var(--red-d)">QS. AR-RUM : 21</p>
         <p style="margin-top:15px;font-size:14px;line-height:1.75;color:var(--ink2)">Setiap agen punya satu misi yang tidak tertulis di berkas mana pun: menemukan rumah untuk pulang. Setelah sekian lama bertugas sendiri, dua agen kami akhirnya menerima misi terpenting dalam hidup mereka — dan Anda termasuk orang terpilih yang mengetahuinya.</p>
@@ -334,10 +380,10 @@ section{position:relative;padding:56px 22px 48px}
     <section id="kisah"><div class="bg-tint"><div class="doc rv rv-right">
       <div class="doc-head"><span class="clip" aria-hidden="true"></span><div class="doc-meta"><div class="doc-no">DOK. 03 — LINIMASA OPERASI</div><h2 class="doc-title">Linimasa Operasi</h2><p class="doc-sub">Love story dalam laporan operasi</p></div><div class="doc-holes"><span class="hole"></span><span class="hole"></span></div><span class="stamp navy doc-stamp rv rv-stamp">ARSIP DIBUKA</span></div>
       <div class="tl">
-        <div class="tl-item rv rv-left"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><path d="M24 6c9 0 15 7 15 16 0 7-2 12-4 18"/><path d="M24 13c6 0 10 5 10 11 0 6-1 10-3 15"/><path d="M24 20c3.4 0 6 3 6 7 0 5-1 9-2 13"/></g></svg><div><div class="tl-year">OPERASI 01 · 2019</div><div class="tl-title">Kontak Pertama</div></div></div><p>Sebuah pertemuan tak terencana di kafe kampus. Target awalnya hanya meminjam buku — hasil akhirnya: dua orang yang sulit berhenti mengobrol. Markas mencatat kejadian ini sebagai awal dari segalanya.</p><img class="tl-thumb" src="assets/undangya/misi-rahasia/galeri-2.webp" alt="Pasangan di kafe pada kontak pertama" loading="lazy"></div></div>
-        <div class="tl-item rv rv-right"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><circle cx="17" cy="17" r="8"/><path d="M23 23l14 14M31 31l5-5M36 36l4-4"/></g></svg><div><div class="tl-year">OPERASI 02 · 2023</div><div class="tl-title">Pengawasan Berubah Sayang</div></div></div><p>Pengawasan jarak dekat berubah arah: semakin sering bertemu, semakin jelas sinyalnya. Kode-kode kecil terbentuk — dan keberanian pertama untuk berkata jujur tentang rasa akhirnya terkirim.</p><img class="tl-thumb" src="assets/undangya/misi-rahasia/galeri-6.webp" alt="Pasangan di perpustakaan lama" loading="lazy"></div></div>
-        <div class="tl-item rv rv-left"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><rect x="7" y="15" width="34" height="24" rx="2"/><path d="M7 17l17 13 17-13M14 39l8-7M34 39l-8-7"/></g><circle cx="24" cy="11" r="3.4" fill="#a52a24"/></svg><div><div class="tl-year">OPERASI 03 · 2025</div><div class="tl-title">Lamaran Terenkripsi</div></div></div><p>Sebuah pesan tersegel disampaikan di hadapan keluarga: niat serius yang selama ini terenkripsi akhirnya terbuka. Jawabannya jelas — diterima. Dua keluarga resmi bergabung dalam satu jaringan.</p><img class="tl-thumb" src="assets/undangya/misi-rahasia/galeri-5.webp" alt="Pasangan di teras atap saat senja" loading="lazy"></div></div>
-        <div class="tl-item rv rv-right"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><circle cx="19" cy="29" r="10"/><circle cx="30" cy="29" r="10"/><path d="M24 8l-4 6h8z" fill="#c9a45c" stroke="#c9a45c"/></g></svg><div><div class="tl-year">OPERASI FINAL · 2027</div><div class="tl-title">Menikah</div></div></div><p>Sabtu, 12 Juni 2027 — semua persiapan dinyatakan selesai. Tinggal satu langkah terakhir: mengucapkan akad, lalu menjalani misi seumur hidup bersama. Mohon doa restu dari seluruh jaringan.</p><img class="tl-thumb" src="assets/undangya/misi-rahasia/hero.webp" alt="Pasangan menjelang hari bahagia" loading="lazy"></div></div>
+        <div class="tl-item rv rv-left"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><img src="assets/undangya/misi-rahasia/misi-sidikjari.webp" alt="" width="30" loading="lazy"><div><div class="tl-year">OPERASI 01 · 2019</div><div class="tl-title">Kontak Pertama</div></div></div><p>Sebuah pertemuan tak terencana di kafe kampus. Target awalnya hanya meminjam buku — hasil akhirnya: dua orang yang sulit berhenti mengobrol. Markas mencatat kejadian ini sebagai awal dari segalanya.</p><img class="tl-thumb" style="object-position:50% 28%" src="assets/undangya/misi-rahasia/galeri-2.webp" alt="Pasangan di kafe pada kontak pertama" loading="lazy"></div></div>
+        <div class="tl-item rv rv-right"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><circle cx="17" cy="17" r="8"/><path d="M23 23l14 14M31 31l5-5M36 36l4-4"/></g></svg><div><div class="tl-year">OPERASI 02 · 2023</div><div class="tl-title">Pengawasan Berubah Sayang</div></div></div><p>Pengawasan jarak dekat berubah arah: semakin sering bertemu, semakin jelas sinyalnya. Kode-kode kecil terbentuk — dan keberanian pertama untuk berkata jujur tentang rasa akhirnya terkirim.</p><img class="tl-thumb" style="object-position:50% 42%" src="assets/undangya/misi-rahasia/galeri-6.webp" alt="Pasangan di perpustakaan lama" loading="lazy"></div></div>
+        <div class="tl-item rv rv-left"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><rect x="7" y="15" width="34" height="24" rx="2"/><path d="M7 17l17 13 17-13M14 39l8-7M34 39l-8-7"/></g><circle cx="24" cy="11" r="3.4" fill="#a52a24"/></svg><div><div class="tl-year">OPERASI 03 · 2025</div><div class="tl-title">Lamaran Terenkripsi</div></div></div><p>Sebuah pesan tersegel disampaikan di hadapan keluarga: niat serius yang selama ini terenkripsi akhirnya terbuka. Jawabannya jelas — diterima. Dua keluarga resmi bergabung dalam satu jaringan.</p><img class="tl-thumb" style="object-position:50% 32%" src="assets/undangya/misi-rahasia/galeri-5.webp" alt="Pasangan di teras atap saat senja" loading="lazy"></div></div>
+        <div class="tl-item rv rv-right"><span class="tl-pin pin" aria-hidden="true"></span><div class="tl-card"><div class="op"><svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#26324a" stroke-width="2.4"><circle cx="19" cy="29" r="10"/><circle cx="30" cy="29" r="10"/><path d="M24 8l-4 6h8z" fill="#c9a45c" stroke="#c9a45c"/></g></svg><div><div class="tl-year">OPERASI FINAL · 2027</div><div class="tl-title">Menikah</div></div></div><p>Sabtu, 12 Juni 2027 — semua persiapan dinyatakan selesai. Tinggal satu langkah terakhir: mengucapkan akad, lalu menjalani misi seumur hidup bersama. Mohon doa restu dari seluruh jaringan.</p><img class="tl-thumb" style="object-position:50% 30%" src="assets/undangya/misi-rahasia/hero.webp" alt="Pasangan menjelang hari bahagia" loading="lazy"></div></div>
       </div>
       <p class="demo-note note-panel rv rv-up">Linimasa &amp; teks kisah di atas adalah contoh untuk tampilan tema.</p>
     </div></div></section>
@@ -397,7 +443,7 @@ section{position:relative;padding:56px 22px 48px}
           <figure class="gal-slide"><div class="ev-card"><span class="ev-pin pin"></span><img src="assets/undangya/misi-rahasia/galeri-7.webp" alt="Pasangan di bawah satu payung" loading="lazy"><div class="ev-label"><span>BUKTI A-07</span><span>TERVERIFIKASI</span></div><figcaption class="ev-note">Satu payung, dua agen, hujan malam.</figcaption></div></figure>
           <figure class="gal-slide"><div class="ev-card"><span class="ev-pin pin"></span><img src="assets/undangya/misi-rahasia/galeri-8.webp" alt="Pasangan di peron stasiun" loading="lazy"><div class="ev-label"><span>BUKTI A-08</span><span>TERVERIFIKASI</span></div><figcaption class="ev-note">Peron keberangkatan menuju selamanya.</figcaption></div></figure>
         </div>
-        <div class="gal-nav"><div class="gal-dots" id="galDots" aria-hidden="true"></div><span class="gal-count" id="galCount">BUKTI 1 / 8</span></div>
+        <div class="gal-nav"><div class="gal-dots" id="galDots" aria-hidden="true"></div><span class="gal-count" id="galCount">BERKAS 1 / 8</span></div>
       </div>
     </div></div></section>
     <div class="perf" aria-hidden="true"><span class="line"></span><svg class="str" width="120" height="14" viewBox="0 0 120 14"><path d="M2 10 C30 2 60 12 118 5" fill="none" stroke="#a52a24" stroke-width="2.4"/></svg><span class="line"></span></div>
@@ -579,6 +625,13 @@ var f=document.getElementById("rsvpForm");if(f)f.addEventListener("submit",funct
     if(!("IntersectionObserver" in window)||reduced){items.forEach(function(e){e.classList.add("in")});return;}
     io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});},{threshold:.13});
     items.forEach(function(e){io.observe(e);});
+    /* rv-clip: clip-path membuat IO membaca irisan 0 untuk elemen & anaknya —
+       amati pembungkus section-nya, buka clip saat pembungkus terlihat. */
+    var clips=document.querySelectorAll(".rv-clip");
+    if(clips.length){
+      var io2=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var c=en.target.querySelector(".rv-clip");if(c)c.classList.add("in");io2.unobserve(en.target);}});},{threshold:.05});
+      clips.forEach(function(c){if(c.parentElement)io2.observe(c.parentElement);});
+    }
   }
 
   /* --- galeri rel geser: indikator titik + hitungan berkas + lightbox --- */
@@ -730,27 +783,5 @@ var f=document.getElementById("rsvpForm");if(f)f.addEventListener("submit",funct
   });
 })();
 </script>
-<script>
-(function(){
-  /* Paralaks SATU dunia kontinu: tumpukan band background bergerak lambat mengikuti
-     progres scroll <main>. Transform-only + rAF throttle; mati bila reduced-motion. */
-  var stack=document.getElementById("worldStack"), main=document.getElementById("content");
-  if(!stack||!main)return;
-  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  var ticking=false;
-  function move(){
-    ticking=false;
-    var vh=window.innerHeight||0, r=main.getBoundingClientRect();
-    var total=r.height-vh; if(total<=0)return;
-    var p=-r.top/total; p=p<0?0:(p>1?1:p);
-    var over=stack.offsetHeight-vh; if(over<0)over=0;
-    stack.style.transform="translate3d(0,"+(-p*over).toFixed(1)+"px,0)";
-  }
-  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(move);}}
-  window.addEventListener("scroll",onScroll,{passive:true});
-  window.addEventListener("resize",onScroll);
-  window.addEventListener("load",move);
-  move();
-})();
-</script></body>
+</body>
 </html>
